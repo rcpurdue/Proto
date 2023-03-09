@@ -17,16 +17,16 @@ void Proto::drawWatchFace(){
     // 12-hour A/PM
     display.setCursor(1, row);
     int displayHour = ((currentTime.Hour+11)%12)+1;
-    display.print(currentTime.Hour < 10 ? "   " : "  ");
+    display.print(displayHour < 10 ? "  " : " ");
     display.print(displayHour);
     display.print(" ");
-    display.print(currentTime.Hour < 12 ? " AM" : "PM");
+    display.print(currentTime.Hour < 12 ? "AM" : "PM");
 
     // 24-hour:Minute
     row += OFFSET;
     display.setCursor(1, row); // +4
     display.print(currentTime.Hour);
-    display.print(":");
+    display.print(currentTime.Minute < 10 ? ":0" : ":");
     display.println(currentTime.Minute);
 
     // MonthNum/Year
